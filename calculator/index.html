@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>calculator</title>
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f8f8f8;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+    
+            main {
+                background-color: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+    
+            table {
+                width: 300px;
+                border-collapse: collapse;
+                margin: 20px;
+            }
+    
+            td {
+                padding: 0;
+                text-align: center;
+            }
+    
+            input {
+                width: calc(100% - 20px);
+                padding: 15px;
+                margin: 0;
+                border: none;
+                text-align: right;
+                font-size: 20px;
+                outline: none;
+                border-bottom: 2px solid #ddd;
+                background-color: white;
+            }
+    
+            button {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                padding: 15px;
+                margin: 5px;
+                font-size: 18px;
+                border: none;
+                cursor: pointer;
+                background-color: #3498db;
+                color: #fff;
+                transition: background-color 0.3s, color 0.3s;
+            }
+    
+            button:hover {
+                background-color: #2980b9;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <table>
+                <tr>
+                    <td colspan="3"><input type="text" value="0" id="input"></td>
+                    <td><button onclick="clean()">C</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="dis('1')">1</button></td>
+                    <td><button onclick="dis('2')">2</button></td>
+                    <td><button onclick="dis('3')">3</button></td>
+                    <td><button onclick="dis('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="dis('4')">4</button></td>
+                    <td><button onclick="dis('5')">5</button></td>
+                    <td><button onclick="dis('6')">6</button></td>
+                    <td><button onclick="dis('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="dis('7')">7</button></td>
+                    <td><button onclick="dis('8')">8</button></td>
+                    <td><button onclick="dis('9')">9</button></td>
+                    <td><button onclick="dis('*')">*</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="dis()">0</button></td>
+                    <td><button onclick="dis()">.</button></td>
+                    <td><button onclick="dis()">/</button></td>
+                    <td><button onclick="solve()">=</button></td>
+                </tr>
+            </table>
+        </main>
+
+        <script>
+            function dis(x){
+                if(document.getElementById("input").value==0){
+                    document.getElementById("input").value="";
+                    document.getElementById("input").value=x ;
+                }else{
+                    document.getElementById("input").value += x;
+                }
+            }
+            function solve(){
+                var x =document.getElementById("input").value;
+                var y=eval(x);
+                document.getElementById("input").value = y;
+            }
+            function clean(){
+                document.getElementById("input").value=0
+            }
+        </script>
+
+    </body>
+</html>
